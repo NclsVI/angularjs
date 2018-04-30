@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO</title>
+    <link rel="stylesheet" href="main.css">
+   
+</head>
+<body ng-controller="todos" data-ng-init="getList()">
+    <p ng-show="!list">Todo-list clean</p>
+    <p>items {{list.length}}</p>
+    <ol>
+        <li ng-repeat="item in list" >
+            <p class="done-{{item.done}}">
+                <input type="checkbox" ng-model="item.done">  {{item.title}}</p>
+            <p>{{item.description}}</p>
+            <p>{{item.date}}</p>
+            <button ng-click="list.splice(list.indexOf(item), 1) ">delete {{list.indexOf(item)}}</button>
+            
+            
+
+        </li>
+    </ol>
+
+    <form ng-submit="addTodo">
+        <input type="text" ng-model="newTodo.title">
+        <button ng-click="addTodo()">create new todo</button>
+        <br>
+        <textarea type="text" placeholder="description" ng-model="newTodo.description"></textarea>
+        <button ng-click="saveTodos()">save all</button>
+    </form>
+
+    <script src="jquery.js"></script>
+    <script src="angular.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
+    <script src="index.js"></script>
+</body>
+</html>
