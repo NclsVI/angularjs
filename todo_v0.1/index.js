@@ -10,7 +10,8 @@
             if(list) $scope.list = JSON.parse(list);
         }
         $scope.saveTodos = function(){
-            document.cookie = 'list='+JSON.stringify($scope.list)
+            document.cookie = 'list='+JSON.stringify($scope.list);
+            console.log($scope.list)
         }
         $scope.newTodo = {}
         $scope.getDate = function(){
@@ -30,6 +31,7 @@
                 $scope.newTodo.done = false;
                 $scope.list.push($scope.newTodo);
                 $scope.newTodo = {};
+                $scope.saveTodos();
             }
             else{
                 alert('enter title')

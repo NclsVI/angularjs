@@ -17,7 +17,7 @@
                 <input type="checkbox" ng-model="item.done">  {{item.title}}</p>
             <p>{{item.description}}</p>
             <p>{{item.date}}</p>
-            <button ng-click="list.splice(list.indexOf(item), 1) ">delete {{list.indexOf(item)}}</button>
+            <button ng-click="list.splice(list.indexOf(item), 1);saveTodos();">delete {{list.indexOf(item)}}</button>
             
             
 
@@ -29,7 +29,6 @@
         <button ng-click="addTodo()">create new todo</button>
         <br>
         <textarea type="text" placeholder="description" ng-model="newTodo.description"></textarea>
-        <button ng-click="saveTodos()">save all</button>
     </form>
 
     <script src="jquery.js"></script>
