@@ -24,14 +24,28 @@
             description: 'test test test',
             date: $scope.getDate(),
             done: true
-        },];
+        },
+        ];
+        $scope.checkOrigin = function(){
+            var i;
+            for(i=0;i<$scope.list.length;i++){
+                if($scope.list[i].title===$scope.newTodo.title) return ('this task created... his id = ' + (i+1))
+            }
+            return true
+        }
         $scope.addTodo = function(){
+            
             if($scope.newTodo.title){
-                $scope.newTodo.date = $scope.getDate();
-                $scope.newTodo.done = false;
-                $scope.list.push($scope.newTodo);
-                $scope.newTodo = {};
-                $scope.saveTodos();
+                if($scope.checkOrigin()===true){
+                    $scope.newTodo.date = $scope.getDate();
+                    $scope.newTodo.done = false;
+                    $scope.list.push($scope.newTodo);
+                    $scope.newTodo = {};
+                    $scope.saveTodos();
+                }
+                else{
+                    alert($scope.checkOrigin());
+                }
             }
             else{
                 alert('enter title')

@@ -9,27 +9,49 @@
    
 </head>
 <body ng-controller="todos" data-ng-init="getList()">
+    <style>
+        p{
+            margin: 0;
+        }
+        .todo-wrap{
+            display: flex;
+        }
+        .todo-list{
+            display: inline-flex;
+            flex-direction: column-reverse;
+            width: 30%;
+        }
+        .todo-list__item{
+            border: 1px solid rebeccapurple;
+        }
+        .todo-form{
+            display: inline-flex;
+            flex-direction: column;
+            align-self: top;
+        }
+    </style>
     <p ng-show="!list">Todo-list clean</p>
     <p>items {{list.length}}</p>
-    <ol>
-        <li ng-repeat="item in list" >
-            <p class="done-{{item.done}}">
-                <input type="checkbox" ng-model="item.done">  {{item.title}}</p>
-            <p>{{item.description}}</p>
-            <p>{{item.date}}</p>
-            <button ng-click="list.splice(list.indexOf(item), 1);saveTodos();">delete {{list.indexOf(item)}}</button>
-            
-            
-
-        </li>
-    </ol>
-
-    <form ng-submit="addTodo">
-        <input type="text" ng-model="newTodo.title">
-        <button ng-click="addTodo()">create new todo</button>
-        <br>
-        <textarea type="text" placeholder="description" ng-model="newTodo.description"></textarea>
-    </form>
+    
+    <div class="todo-wrap">
+        <div class="todo-list">
+            <div ng-repeat="item in list"
+                class="todo-list__item">
+                <p>{{list.indexOf(item)+1}}</p>
+                <p class="done-{{item.done}}">
+                    <input type="checkbox" ng-model="item.done">  {{item.title}}</p>
+                <p>{{item.description}}</p>
+                <p>{{item.date}}</p>
+                <button ng-click="list.splice(list.indexOf(item), 1);saveTodos();">delete {{list.indexOf(item)+1}}-nd todo</button>
+            </div>
+        </div>
+    
+        <form class="todo-form" ng-submit="addTodo">
+            <input type="text" ng-model="newTodo.title" placeholder="enter your task">
+            <textarea type="text" placeholder="description" ng-model="newTodo.description"></textarea>
+            <button ng-click="addTodo()">create new todo</button>
+        </form>
+    </div>
 
     <script src="jquery.js"></script>
     <script src="angular.js"></script>
