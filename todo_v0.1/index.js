@@ -19,13 +19,7 @@
             var time = new Date().toLocaleString().split(',')[1];
             return date+'('+time+')'
         }
-        $scope.list = [{
-            title: 'test',
-            description: 'test test test',
-            date: $scope.getDate(),
-            done: true
-        },
-        ];
+        $scope.list = [];
         $scope.checkOrigin = function(){
             var i;
             for(i=0;i<$scope.list.length;i++){
