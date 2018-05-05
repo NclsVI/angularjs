@@ -3,14 +3,11 @@
 
     window.app.controller('todos', ['$scope', function ($scope) {
         $scope.getList = function(){
-            var matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + 'list'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            var list = (matches ? decodeURIComponent(matches[1]) : undefined) ;
+            var list = localStorage.getItem('list');
             if(list) $scope.list = JSON.parse(list);
         }
         $scope.saveTodos = function(){
-            document.cookie = 'list='+JSON.stringify($scope.list);
+            localStorage.setItem('list', JSON.stringify($scope.list))
             console.log($scope.list)
         }
         $scope.newTodo = {}
