@@ -35,7 +35,7 @@
     
     <div class="todo-wrap">
         <div class="todo-list">
-            <div ng-repeat="item in list"
+            <div ng-repeat="item in list track by $index"
                 class="todo-list__item">
                 <p>{{list.indexOf(item)+1}}</p>
                 <p class="done-{{item.done}}">
